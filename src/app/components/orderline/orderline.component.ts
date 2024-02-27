@@ -14,16 +14,16 @@ import {DatePipe} from '@angular/common';
   styleUrl: './orderline.component.scss'
 })
 export class OrderlineComponent implements AfterViewInit {
-  displayedColumns: string[] = ['created', 'state', 'number', 'title'];
+  displayedColumns: string[] = ["OrderLineID", "OrderID", "StockItemID", "Description", "PackageTypeID", "Quantity", "UnitPrice"];
   exampleDatabase: ExampleHttpDatabase | null;
-  data: GithubIssue[] = [];
+  data: minizubuAPI[] = [];
 
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  
+
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private _httpClient: HttpClient) {}
@@ -57,17 +57,25 @@ export class OrderlineComponent implements AfterViewInit {
           // Only refresh the result length if there is new data. In case of rate
           // limit errors, we do not want to reset the paginator to zero, as that
           // would prevent users from re-triggering requests.
-          this.resultsLength = data.total_count;
-          return data.items;
+          this.resultsLength = data.OrderLineID;
+          return data;
         }),
       )
-      .subscribe(data => (this.data = data));
+      .subscribe(data => {
+        console.log('fetched');
+      } )
+        // (this.data = data));
   }
 }
 
-export interface GithubApi {
-  items: GithubIssue[];
-  total_count: number;
+export interface minizubuAPI {
+  OrderLineID: number,
+  OrderID: number,
+  StockItemID: number,
+  Description: string,
+  PackageTypeID: number,
+  Quantity: number,
+  UnitPrice: number
 }
 
 export interface GithubIssue {
@@ -81,12 +89,12 @@ export interface GithubIssue {
 export class ExampleHttpDatabase {
   constructor(private _httpClient: HttpClient) {}
 
-  getRepoIssues(sort: string, order: SortDirection, page: number): Observable<GithubApi> {
-    const href = 'https://api.github.com/search/issues';
-    const requestUrl = `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${
-      page + 1
-    }`;
+  getRepoIssues(sort: string, order: SortDirection, page: number): Observable<minizubuAPI> {
+    const href = 'https://minizuba-fn.azurewebsites.net/api/orderlines?type_id=1';
+    // const requestUrl = `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${
+    //   page + 1
+    // }`;
 
-    return this._httpClient.get<GithubApi>(requestUrl);
+    return this._httpClient.get<minizubuAPI>(href);
   }
 }
