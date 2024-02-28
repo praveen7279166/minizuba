@@ -51,9 +51,9 @@
             </span>
             <mat-menu #filterMenu="matMenu">
               <ng-template matMenuContent>
-                <mat-menu-item *ngFor="let range of filterRanges" (click)="applyFilter(range.from)">{{ range.from }}</mat-menu-item>
+                <button mat-button *ngFor="let range of filterRanges" (click)="applyFilter(range.from)">{{ range.from }} " - " {{ range.to}}</button>
                 <mat-divider></mat-divider>
-                <mat-menu-item (click)="applyFilter(201)">200+</mat-menu-item>
+                <button mat-button (click)="applyFilter(201)">200+</button>
               </ng-template>
             </mat-menu>
           </div>
