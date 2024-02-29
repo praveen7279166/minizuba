@@ -103,6 +103,10 @@ table {
         max-height: 100%;
         overflow: auto;
 
+        & .material-symbols-outlined {
+            cursor: pointer;
+        }
+
         & .quantity_header {
             align-items: center;
             display: flex;
@@ -114,4 +118,13 @@ table {
         white-space: nowrap;
         max-width: 20rem;
     }
+}
+
+::ng-deep .filter-btn-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.bold {
+    font-weight: 500;
 }

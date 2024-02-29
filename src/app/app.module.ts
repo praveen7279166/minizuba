@@ -15,7 +15,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatButtonModule} from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatMenuModule} from '@angular/material/menu'
+import {MatMenuModule} from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatChipsModule} from '@angular/material/chips';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import {MatMenuModule} from '@angular/material/menu'
     MatFormFieldModule,
     MatButtonModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule,
+    MatChipsModule,
+    ReactiveFormsModule
 
   ],
   providers: [
