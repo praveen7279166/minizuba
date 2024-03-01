@@ -120,11 +120,11 @@ table {
     }
 }
 
+.material-symbols-outlined {
+    font-size: 20px;
+}
+
 ::ng-deep .filter-btn-container {
     display: flex;
     flex-direction: column;
-}
-
-.bold {
-    font-weight: 500;
 }

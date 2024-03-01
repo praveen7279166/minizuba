@@ -55,7 +55,6 @@ export class OrderlineComponent implements OnInit {
         this.oData = oData.sort((a, b) => a.OrderLineID - b.OrderLineID);
         this.dataSource = new MatTableDataSource<minizubuAPI>(this.oData);
         this.dataSource.paginator = this.paginator;
-        this.oCD.detectChanges();
       }
     });
   }

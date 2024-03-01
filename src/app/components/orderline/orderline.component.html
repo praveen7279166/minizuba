@@ -20,8 +20,8 @@
     <table mat-table [dataSource]="dataSource">
       
       <ng-container matColumnDef="OrderLineID">
-        <th mat-header-cell *matHeaderCellDef class="bold"> OrderLineID </th>
-        <td mat-cell *matCellDef="let element" class="bold"> {{element.OrderLineID}} </td>
+        <th mat-header-cell *matHeaderCellDef> OrderLineID </th>
+        <td mat-cell *matCellDef="let element"> {{element.OrderLineID}} </td>
       </ng-container>
   
       <ng-container matColumnDef="OrderID">
@@ -61,7 +61,7 @@
               <ng-template matMenuContent>
                 <div class="filter-btn-container">
                   <ng-container *ngFor="let oRange of filterRanges; let last = last" >
-                    <button mat-button *ngIf="!last; else lastFilter" (click)="applyFilter(oRange)">{{ oRange.from }} " - " {{ oRange.to}}</button>
+                    <button mat-button *ngIf="!last; else lastFilter" (click)="applyFilter(oRange)">{{ oRange.from }}  -  {{ oRange.to}}</button>
                     <ng-template #lastFilter>
                       <mat-divider></mat-divider>
                       <button mat-button (click)="applyFilter(oRange)">200+</button>
