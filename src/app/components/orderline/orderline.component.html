@@ -17,6 +17,11 @@
   
   <div class="mat-elevation-z8 table-container" *ngIf="bShowTable">
 
+    <mat-form-field class="search-form-field">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilterBySearch($event)" placeholder="Search" #input>
+    </mat-form-field>
+
     <table mat-table [dataSource]="dataSource">
       
       <ng-container matColumnDef="OrderLineID">
